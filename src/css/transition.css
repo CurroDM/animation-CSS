@@ -1,0 +1,31 @@
+@view-transition {
+    navigation: auto;
+}
+
+#title {
+    view-transition-name: title;
+}
+
+::view-transition-group(*) {
+  animation-duration: .5s;  
+}
+
+::view-transition-group(root) {
+    animation: none;
+}
+
+#card-image, #hero-image {
+    view-transition-name: picture;
+}
+
+::view-transition-old(picture),
+::view-transition-new(picture) {
+    animation: auto;
+    mix-blend-mode: normal;
+    height: 100%;
+}
+
+::view-transition-new(picture) {
+    object-fit: cover;
+    overflow: hidden;
+}
