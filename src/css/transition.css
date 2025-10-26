@@ -25,7 +25,51 @@
     height: 100%;
 }
 
-::view-transition-new(picture) {
+#to::view-transition-new(picture) {
     object-fit: cover;
+    overflow: hidden;
+}
+
+#from::view-transition-new(picture) {
+    object-fit: contain;
+    border-radius: 1rem;
+}
+
+#from::view-transition-new(picture) {
+    object-fit: cover;
+    overflow: hidden;
+}
+
+::view-transition-old(title) {
+    opacity: 0;
+}
+
+#overlay {
+    view-transition-name: overlay;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+::view-transition-new(overlay) {
+    animation: 250ms cubic-bezier(0, 0, 0.3, 1) both fade-in;
+    animation-delay: 0.5s;
+}
+
+::view-transition-old(overlay) {
+    animation: 50ms cubic-bezier(0.3, 0, 1, 1) both fade-out;
+}
+
+::view-transition-group(overlay) {
     overflow: hidden;
 }
